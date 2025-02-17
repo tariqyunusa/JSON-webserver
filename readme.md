@@ -20,9 +20,22 @@ Ensure you have **Node.js** installed. Then, install the required packages:
 ```sh
 npm install
 
-node server.js
-
 ```
 
+### 2️⃣ Run the Server
+```sh
+node server.js
+```
+
+
 ## 🔗 API Endpoints
+📌 User API Endpoints
+
+| Method  | Endpoints | Description | Request Body (if applicable) |
+|-------  | --------- | ----------- | ---------------------------- |
+| **GET** | /api/users/ | get all users | -                        |
+| ------- | ---------- | -------------- | ------------------------ |
+| **GET** | /api/users/:id | get a single user | -                 |
+| ------- | -------------- | ----------------- | ----------------- |
+
 
