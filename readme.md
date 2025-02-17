@@ -40,7 +40,7 @@ node server.js
 | **DELETE** | /api/users/:id | Delete a user | -                  | 
 
 
-1. Get All Users
+**📍 1. Get All Users**
 - Endpoint: GET /api/users
 - Response:
 ```json
@@ -50,7 +50,7 @@ node server.js
 ]
 ```
 
-📍 2. Get a Single User
+**📍 2. Get a Single User**
 - Endpoint: GET /api/users/:id
 - Example Request: /api/users/1
 - Response (User Found):
@@ -62,7 +62,7 @@ node server.js
 { "error": "User not found" }
 ```
 
-📍 3. Create a New User
+**📍 3. Create a New User**
 - Endpoint: POST /api/users
 - Headers: 
 ```json
@@ -77,7 +77,7 @@ node server.js
 { "message": "User created", "user": { "id": 3, "name": "New User", "email": "newuser@example.com" } }
 ```
 
-📍 4. Update a User
+**📍 4. Update a User**
 - Endpoint: PUT /api/users/:id
 - Headers: 
 ```json
@@ -92,7 +92,7 @@ node server.js
 { "message": "User updated", "user": { "id": 1, "name": "Updated Name", "email": "alice@example.com" } }
 ```
 
-📍 5. Delete a User
+**📍 5. Delete a User**
 - Endpoint: DELETE /api/users/:id
 - Response (User Deleted):
 ```json
@@ -102,6 +102,53 @@ node server.js
 ```json
 { "error": "User not found" }
 ```
+
+**🖥️ Serving Static Files**
+The server serves static files from the public directory.
+
+Example:
+Place index.html, styles.css, or any assets in /public
+Access them via: http://localhost:3000/index.html
+
+
+
+**🔄 WebSockets (Real-Time)**
+WebSockets enable real-time communication between the server and clients.
+
+Example WebSocket Client:
+```js
+const socket = new WebSocket('ws://localhost:3000');
+
+socket.onopen = () => {
+    console.log("Connected to WebSocket");
+    socket.send("Hello Server!");
+};
+
+socket.onmessage = (event) => {
+    console.log("Message from server:", event.data);
+};
+```
+
+
+**✅ Testing the API**
+You can test the API using:
+
+- Postman (Recommended)
+- cURL (Command Line)
+
+**🔹 Example: Creating a User (cURL)**
+```sh
+curl -X POST http://localhost:3000/api/users \
+-H "Content-Type: application/json" \
+-d '{"name": "New User", "email": "new@example.com"}'
+```
+
+**🔹 Example: Deleting a User (cURL)**
+```sh
+curl -X DELETE http://localhost:3000/api/users/1
+```
+
+
 
 
 
