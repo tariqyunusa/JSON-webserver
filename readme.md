@@ -34,8 +34,75 @@ node server.js
 | Method  | Endpoints | Description | Request Body (if applicable) |
 |-------  | --------- | ----------- | ---------------------------- |
 | **GET** | /api/users/ | get all users | -                        |
-| ------- | ---------- | -------------- | ------------------------ |
 | **GET** | /api/users/:id | get a single user | -                 |
-| ------- | -------------- | ----------------- | ----------------- |
+| **POST** | /api/users | Create a new user | {name: "John Doe", email: "John@xyz.com"} |
+| **PUT** | /api/users/:id | Update an existing user | {name: "Updated Name"} |
+| **DELETE** | /api/users/:id | Delete a user | -                  | 
+
+
+1. Get All Users
+- Endpoint: GET /api/users
+- Response:
+```json
+[
+  { "id": 1, "name": "Alice Doe", "email": "alice@example.com" },
+  { "id": 2, "name": "John Doe", "email": "john@example.com" }
+]
+```
+
+📍 2. Get a Single User
+- Endpoint: GET /api/users/:id
+- Example Request: /api/users/1
+- Response (User Found):
+```json
+{ "id": 1, "name": "Alice Doe", "email": "alice@example.com" }
+```
+- Response (User Not Found):
+```json
+{ "error": "User not found" }
+```
+
+📍 3. Create a New User
+- Endpoint: POST /api/users
+- Headers: 
+```json
+{ "Content-Type": "application/json" }
+```
+- Request Body:
+```json
+{ "name": "New User", "email": "newuser@example.com" }
+```
+- Response:
+```json
+{ "message": "User created", "user": { "id": 3, "name": "New User", "email": "newuser@example.com" } }
+```
+
+📍 4. Update a User
+- Endpoint: PUT /api/users/:id
+- Headers: 
+```json
+{ "Content-Type": "application/json" }
+```
+- Requset Body:
+```json
+{ "name": "Updated Name" }
+```
+- Response:
+```json
+{ "message": "User updated", "user": { "id": 1, "name": "Updated Name", "email": "alice@example.com" } }
+```
+
+📍 5. Delete a User
+- Endpoint: DELETE /api/users/:id
+- Response (User Deleted):
+```json
+{ "message": "User deleted", "user": { "id": 1, "name": "Alice Doe", "email": "alice@example.com" } }
+```
+- Response (User Not Found):
+```json
+{ "error": "User not found" }
+```
+
+
 
 
